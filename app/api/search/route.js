@@ -6,6 +6,7 @@ import { getWeatherData } from '@/lib/services/weather';
 
 /**
  * GET /api/search?query=...&lat=...&lng=...&otherParams=...
+ * serves as the central aggregator and context enhancer for incoming search requests
  */
 export async function GET(request) {
   try {
