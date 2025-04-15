@@ -18,14 +18,14 @@ export async function GET(request) {
     const activity = searchParams.get('activity') || '';
 
     // Use MCP middleware (or helper) to enrich the context.
-    const context = await enrichContext({ query, lat, lng, activity });
+    const context = {query, lat, lng}; // TODO: re-add this -> await enrichContext({ query, lat, lng, activity })
     // 'enrichContext' will add things like current season, user preference defaults, etc.
 
     // Fetch data from external APIs concurrently.
     const [npsData, recgovData, weatherData] = await Promise.all([
       getNPSData(context),
-      getRecGovData(context),
-      getWeatherData(context)
+      // getRecGovData(context),
+      // getWeatherData(context)
     ]);
 
     // Combine and process the responses as needed.
